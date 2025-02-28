@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+  <link rel="stylesheet" href="CarDisplay.css">
+</head>
+
+
+<body>
+  <div class="hero">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <div class="logo">
+          <img src="uploads/logo.png"  class="logo-icon">
+          <a href="Home.html" class="logo-link">Mega City Cab</a>
+      </div>
+      <ul>
+          <li><a href="Home.html">HOME</a></li>
+          <li><a href="Rooms.html">RENTALS</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+          <li><a href="Contact.html">CONTACT</a></li>
+      </ul>
+      <button class="book-now" onclick="window.location.href='Rooms.html'">Book Now</button>
+      <div id="profileIconContainer"></div>
+    </div>
+
+    <!-- Title -->
+    <div class="title">
+        <div class="title-image-overlay"></div>
+        <img src="https://cka-dash.s3.amazonaws.com/025-0219-BS126/mainimage.jpg"  class="title-image">
+        <h1 class="title-name">Car Gallery</h1>
+    </div>
+
+    <!-- filter section -->
+    <div class="filter-container">
+        <!-- Filter By Label -->
+        <div class="filter-label">
+            Filter By</span> :
+        </div>
+
+        <!-- Category Dropdown -->
+        <div class="dropdown">
+            <label for="categorySelect">Category</label>
+            <select id="categorySelect">
+                <option value="all">All</option>
+                <option value="minicar">Minicar</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="luxury">Luxury Car</option>
+                <option value="jeep">Jeep</option>
+                <option value="sports">Sports Car</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Brand Dropdown -->
+        <div class="dropdown">
+            <label for="brandSelect">Brand</label>
+            <select id="brandSelect">
+                <option value="all">All</option>
+                <option value="nissan">Nissan</option>
+                <option value="toyota">Toyota</option>
+                <option value="honda">Honda</option>
+                <option value="hyundai">Hyundai</option>
+                <option value="suzuki">Suzuki</option>
+                <option value="mitsubishi">Mitsubishi</option>
+                <option value="audi">Audi</option>
+                <option value="bmw">BMW</option>
+                <option value="mercedes">Mercedes Benz</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-box">
+            <label for="searchInput">Search</label>
+            <div class="search-container">
+                <input id="searchInput" type="text" placeholder="Search...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- cars section -->
+    <section class="car-gallery">
+        <div class="car-gallery-container" id="car-gallery-container">
+            <!-- Car cards will be inserted here dynamically -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Logo & Slogan -->
+        <div class="logo">MEGA CITY CAB</div>
+        <div class="slogan">Cab Service Company</div>
+
+        <!-- Menu Sections -->
+        <div class="menu">
+            <div class="menu-section">
+                <a href="Terms.html">Terms & Conditions</a>
+                <a href="Blog.html">Blog</a>
+            </div>
+            <div class="menu-section">
+                <a href="Feedback.html">Feedback</a>
+                <a href="Support.html">Support</a>
+            </div>
+            <div class="menu-section">
+                <a href="About.html">About Us</a>
+                <a href="Contact.html">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook" class="mx-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Twitter" class="mx-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" aria-label="Instagram" class="mx-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Whatsapp" class="mx-2"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="Youtube" class="mx-2"><i class="bi bi-youtube"></i></a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright">© Copyright. All rights reserved.</div>
+    </footer>
+  </div>
+
+
+<!-- navbar profile -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let profileIconContainer = document.getElementById("profileIconContainer");
+  
+        if (sessionStorage.getItem("isLoggedIn") === "true") {
+            profileIconContainer.innerHTML = `
+                <img src="https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg" 
+                     alt="Profile" 
+                     class="profile-icon" 
+                     onclick="window.location.href='Profile.html'">
+            `;
+        } else {
+            profileIconContainer.innerHTML = ""; // Hide profile icon if not logged in
+        }
+    });
+</script> 
+
+<!-- cars section -->
+<script>
+        // Car data
+    const cars = [
+    {
+        name: "Toyota Land Cruiser",
+        image: "https://media.ed.edmunds-media.com/toyota/land-cruiser/2025/oem/2025_toyota_land-cruiser_4dr-suv_1958_fq_oem_1_600.jpg",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    },
+    {
+        name: "Nissan GTR Turbo",
+        image: "https://assets.autoweek.nl/m/z5zyh7kbwya7_800.jpg",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    },
+    {
+        name: "Mitsubishi Montero",
+        image: "https://carsguide.ikman.lk/wp-content/uploads/2024/02/montero-featured-1.jpg",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    },
+    {
+        name: "BMW 740L Series",
+        image: "https://carsforsale.co.ke/wp-content/uploads/2024/02/2016-BMW-7-Series-740i-3.0-2WD-c.jpg",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    },
+    {
+        name: "BMW M5 Competition",
+        image: "https://bringatrailer.com/wp-content/uploads/2023/09/2022_bmw_m5-competition_2022_bmw_m5-competition_c055ee2f-b1de-4872-bebf-c1faf850f109-rvdpgs-95087-82392.jpg?fit=940%2C627",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    },
+    {
+        name: "Audi Q2",
+        image: "https://i.ytimg.com/vi/IWdfzFZcXlo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBTXARUCjc7u6cuK80qbpR2tdPIsA",
+        price: "$49/Day",
+        description: "Komodo Island is one of the only places in the world where you can spot...",
+        seatCapacity: "4 People",
+        totalDoors: "4 Doors",
+        fuelTank: "450 Liters"
+    }
+    ];
+    
+    // Function to render car cards
+    const renderCars = () => {
+    const container = document.getElementById("car-gallery-container");
+    container.innerHTML = "";
+    
+    cars.forEach(car => {
+        const carCard = document.createElement("div");
+        carCard.classList.add("car-card");
+    
+        carCard.innerHTML = `
+            <div class="car-image">
+                <img src="${car.image}" alt="${car.name}">
+                <span class="price-tag">${car.price}</span>
+            </div>
+            <div class="car-content">
+                <h3>${car.name}</h3>
+                <p>${car.description}</p>
+                <div class="features">
+                    <p><i class="fa-solid fa-users"></i> Seat Capacity: ${car.seatCapacity}</p>
+                    <p><i class="fa-solid fa-car"></i> Total Doors: ${car.totalDoors}</p>
+                    <p><i class="fa-solid fa-gas-pump"></i> Fuel Tank: ${car.fuelTank}</p>
+                </div>
+                <button class="rent-btn">Rent Now</button>
+            </div>
+        `;
+    
+        container.appendChild(carCard);
+    });
+    };
+    
+    // Load cars when page loads
+    window.onload = renderCars;
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Background styling */
+  .hero {
+    height: auto;
+    background-color: white;
+  }
+
+  /* Navigation bar styling */
+  .navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    background: rgb(51, 55, 55);
+  }
+
+  .navbar .logo {
+    padding: 0px 25px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: center; 
+  }
+
+  .navbar ul li {
+    display: inline;
+  }
+
+  .navbar ul li a {
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+
+  .navbar ul li a:hover {
+     color: #ff5b5b;  
+  }
+
+  /* Book Now Button */
+  .book-now {
+    margin-right: 15px;
+    display: flex;
+    color: #ff5b5b;   
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #ff5b5b; 
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .book-now:hover {
+    background: #ff5b5b;  
+    border: 1px solid black;
+    color: black;
+  }
+
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* image section */
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+/* car model container*/
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    display: flex;
+    justify-content: center;
+}
+
+.detailcontainer{
+    width: 900px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.price {
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.price span {
+    font-size: 16px;
+    color: gray;
+}
+
+/* Car Details */
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.car-details i{
+    color:#ff4d4d;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* Description */
+.description {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Included and Excluded */
+.info-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+ul li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+ul li i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: grey;
+}
+
+/* Booking Form */
+.booking-form {
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-left: 30px;
+    border-top: 1px solid #ddd;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* With Driver Checkbox */
+.driver-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.driver-option label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.driver-option input {
+    width: 18px;
+    height: 18px;
+}
+
+/* Driver Price */
+.driver-price {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Book Button */
+.book-btn {
+    width: 100%;
+    padding: 12px;
+    background: red;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-btn:hover {
+    background: darkred;
+}
+
+
+/* footer */
+.footer {
+    margin-top: 100px;
+    background: url(https://media.istockphoto.com/id/927422762/vector/silhouette-of-a-automotive-car.jpg?s=612x612&w=0&k=20&c=sg301t-Njw4z9ev_KHLto-63KcYS-L4lhI6qtmxKBhk=);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    /* border-top-left-radius: 30%;
+    border-top-right-radius: 30%;  */
+  }
+
+
+  .footer .logo {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .footer .slogan {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #ddcfb6;
+  }
+
+  .footer .menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+
+  .footer .menu div {
+    margin: 0 50px;
+  }
+
+  .footer .menu div a {
+    display: block;
+    color: #ccbca0;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 15px 0;
+    text-decoration: none;
+    transition: color 0.3s;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .footer .menu div a:hover {
+    color: #c5b08d;
+    text-decoration: underline;
+  }
+
+  .social-icons a {
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    width: 35px; 
+    height: 35px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: #f0f0f0; 
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); 
+    background-color: #dcdcdc; 
+  }
+
+  .social-icons a i {
+    font-size: 18px; 
+    color: #bb3434; 
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover i {
+    color: #000;
+  }
+
+
+  .footer .copyright {
+    font-size: 12px;
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  .footer hr {
+    margin: 30px auto;
+    border: 0;
+    height: 2px;
+    background-color: #2c2b2b;
+    width: 80%;
+  }
