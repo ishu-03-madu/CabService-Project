@@ -6,7 +6,7 @@
   <title>Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="Home.css" />
 </head>
 
@@ -123,6 +123,18 @@
           </div>
         </div>
 
+        <!-- car section -->
+        <section class="popular-cars-section">
+            <div class="section-header">
+                <span class="badge">POPULAR CARS</span>
+                <h4>Most Popular Cars</h4>
+            </div>
+            
+            <div class="cars-container" id="cars-container">
+                <!-- Car cards will be inserted here dynamically -->
+            </div>
+        </section>
+
         <!-- car types -->
         <div class="car-types">
           <!-- Badge -->
@@ -166,7 +178,7 @@
         <div class="car-brands">
             <!-- Badge -->
             <div class="badge-container">
-                <span class="badge">Brands</span>
+                <span class="badge">BRANDS</span>
             </div>
     
             <!-- Title -->
@@ -286,6 +298,101 @@
         carouselContent.appendChild(div);
       });
 </script> 
+
+<!-- car section -->
+<script>
+    // Car data
+const cars = [
+{
+    name: "Toyota Land Cruiser",
+    image: "https://media.ed.edmunds-media.com/toyota/land-cruiser/2025/oem/2025_toyota_land-cruiser_4dr-suv_1958_fq_oem_1_600.jpg",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+},
+{
+    name: "Nissan GTR Turbo",
+    image: "https://assets.autoweek.nl/m/z5zyh7kbwya7_800.jpg",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+},
+{
+    name: "Mitsubishi Montero",
+    image: "https://carsguide.ikman.lk/wp-content/uploads/2024/02/montero-featured-1.jpg",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+},
+{
+    name: "BMW 740L Series",
+    image: "https://carsforsale.co.ke/wp-content/uploads/2024/02/2016-BMW-7-Series-740i-3.0-2WD-c.jpg",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+},
+{
+    name: "BMW M5 Competition",
+    image: "https://bringatrailer.com/wp-content/uploads/2023/09/2022_bmw_m5-competition_2022_bmw_m5-competition_c055ee2f-b1de-4872-bebf-c1faf850f109-rvdpgs-95087-82392.jpg?fit=940%2C627",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+},
+{
+    name: "Audi Q2",
+    image: "https://i.ytimg.com/vi/IWdfzFZcXlo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBTXARUCjc7u6cuK80qbpR2tdPIsA",
+    price: "$49/Day",
+    description: "Komodo Island is one of the only places in the world where you can spot...",
+    seatCapacity: "4 People",
+    totalDoors: "4 Doors",
+    fuelTank: "450 Liters"
+}
+];
+
+// Function to render car cards
+const renderCars = () => {
+const container = document.getElementById("cars-container");
+container.innerHTML = "";
+
+cars.forEach(car => {
+    const carCard = document.createElement("div");
+    carCard.classList.add("car-card");
+
+    carCard.innerHTML = `
+        <div class="car-image">
+            <img src="${car.image}" alt="${car.name}">
+            <span class="price-tag">${car.price}</span>
+        </div>
+        <div class="car-content">
+            <h3>${car.name}</h3>
+            <p>${car.description}</p>
+            <div class="features">
+                <p><i class="fa-solid fa-users"></i> Seat Capacity: ${car.seatCapacity}</p>
+                <p><i class="fa-solid fa-car"></i> Total Doors: ${car.totalDoors}</p>
+                <p><i class="fa-solid fa-gas-pump"></i> Fuel Tank: ${car.fuelTank}</p>
+            </div>
+            <button class="rent-btn">Rent Now</button>
+        </div>
+    `;
+
+    container.appendChild(carCard);
+});
+};
+
+// Load cars when page loads
+window.onload = renderCars;
+
+</script>
   
 </body>
 </html>
