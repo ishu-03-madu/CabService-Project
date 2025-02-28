@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="Home.css" />
+</head>
+
+
+<body>
+  <div class="hero">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <div class="logo">
+          <img src="uploads/logo.png"  class="logo-icon">
+          <a href="Home.html" class="logo-link">Mega City Cab</a>
+      </div>
+      <ul>
+          <li><a href="Home.html">HOME</a></li>
+          <li><a href="Rooms.html">RENTALS</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+          <li><a href="Contact.html">CONTACT</a></li>
+      </ul>
+      <button class="book-now" onclick="window.location.href='Rooms.html'">Book Now</button>
+      <div id="profileIconContainer"></div>
+    </div>
+
+        <!-- carousel -->
+        <div class="carousel">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner" id="carouselContent">
+                <!-- Carousel items will be injected here by JavaScript -->
+              </div>
+            </div>
+        </div>
+      
+        <!-- login-register -->
+        <div class="login-buttons">
+            <button onclick="window.location.href='Login.html'">Login</button>
+            <button onclick="window.location.href='Signup.html'">Register</button>
+        </div>
+      
+        <h2>WELCOME TO MEGA CITY CAB</h2>
+        <h1>Exquisite Drives for Premium Journeys</h1>
+
+        <!-- Reservation Bar -->
+        <div class="reservation-bar">
+          <div class="reservation-item">
+            <label for="start-date">When to Start</label>
+            <input type="date" id="start-date">
+          </div>
+          <div class="reservation-item">
+            <label for="end-date">When to End</label>
+            <input type="date" id="end-date">
+          </div>
+          <div class="reservation-item">
+            <label for="vehicle-type">Type</label>
+            <select id="vehicle-type">
+              <option value="" selected disabled>Select</option>
+              <option value="taxi">Taxi</option>
+              <option value="minicar">Mini Car</option>
+              <option value="hatchback">Hatchback</option>
+              <option value="car">Car</option>
+              <option value="lux-car">Luxury Car</option>
+              <option value="cab">Cab</option>
+              <option value="jeep">Jeep</option>
+            </select>
+          </div>
+          <div class="reservation-item">
+            <label for="brand">Brand</label>
+            <select id="brand">
+              <option value="" selected disabled>Select</option>
+              <option value="nissan">Nissan</option>
+              <option value="toyota">Toyota</option>
+              <option value="honda">Honda</option>
+              <option value="hyundai">Hyundai</option>
+              <option value="suzuki">Suzuki</option>
+              <option value="mitsubishi">Mitsubishi</option>
+            </select>
+          </div>
+          <button class="check-availability">Check Availability</button>
+        </div>
+
+        <!-- guidelines -->
+        <div class="how-it-works">
+          <div class="section-title">
+              <button class="badge">GUIDANCE</button>
+              <h4>How It Works</h4>
+          </div>
+          <div class="steps">
+              <div class="step">
+                  <span class="step-number">1</span>
+                  <div class="icon bg-orange">
+                      <i class="bi bi-person-circle"></i>
+                  </div>
+                  <p>Sign up Account</p>
+              </div>
+              <div class="step">
+                  <span class="step-number">2</span>
+                  <div class="icon bg-purple">
+                      <i class="bi bi-search"></i>
+                  </div>
+                  <p>Search your Vehicle</p>
+              </div>
+              <div class="step">
+                  <span class="step-number">3</span>
+                  <div class="icon bg-green">
+                      <i class="bi bi-cash"></i>
+                  </div>
+                  <p>Pay the Car Rent</p>
+              </div>
+              <div class="step">
+                  <span class="step-number">4</span>
+                  <div class="icon bg-yellow">
+                      <i class="bi bi-car-front-fill"></i>
+                  </div>
+                  <p>Take Car to Road</p>
+              </div>
+          </div>
+        </div>
+
+        <!-- car types -->
+        <div class="car-types">
+          <!-- Badge -->
+          <div class="badge-container">
+              <span class="badge">CAR TYPES</span>
+          </div>
+  
+          <!-- Title -->
+          <h4 class="section-title">Explore Car Types</h4>
+  
+          <!-- Car Type Cards -->
+          <div class="car-types-container">
+              <div class="car-type-card">
+                  <img src="https://thumbs.dreamstime.com/b/old-mini-car-small-red-isolated-white-background-30799662.jpg" alt="miniar">
+                  <p>MiniCar</p>
+              </div>
+              <div class="car-type-card">
+                  <img src="https://www.pricelanka.lk/wp-content/uploads/2021/03/Suzuki-Alto.png" alt="Hatchback">
+                  <p>Hatchback</p>
+              </div>
+              <div class="car-type-card">
+                  <img src="https://www.pricelanka.lk/wp-content/uploads/2021/04/Honda-Civic.png" alt="Sedan">
+                  <p>Sedan</p>
+              </div>
+              <div class="car-type-card">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC7BnA6yaqz358POd-pXYWDM-2N-UwGixBp3eL50hDUw26nHkHh1jeVU9n9uhnjoYB3go&usqp=CAU" alt="Luxury car">
+                  <p>Luxury Car</p>
+              </div>
+              <div class="car-type-card">
+                  <img src="https://www.jeep.com.lk/content/dam/cross-regional/asean/jeep/common/bhp/lineup/drive_forward/2021_Wrangler_Rubicon_Sting_Gray.jpg.img.500.jpg" alt="jeep">
+                  <p>Jeep</p>
+              </div>
+              <div class="car-type-card">
+                  <img src="https://api.hobbymart.lk/api/assets/product-images/P1734658534008_1.png" alt="Sports Car">
+                  <p>Sports Car</p>
+              </div>
+          </div>
+        </div>
+    
+        <!-- car brands -->
+        <div class="car-brands">
+            <!-- Badge -->
+            <div class="badge-container">
+                <span class="badge">Brands</span>
+            </div>
+    
+            <!-- Title -->
+            <h4 class="section-title">Explore Premium Car Brands</h4>
+    
+            <!-- Car Type Cards -->
+            <div class="car-types-container">
+                <div class="car-type-card">
+                    <img src="https://global.toyota/pages/global_toyota/mobility/toyota-brand/emblem_ogp_001.png" alt="toyota">
+                    <p>TOYOTA</p>
+                </div>
+                <div class="car-type-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcZ2B7VByimVyejhLrIPRYmWQojpiGiUfMkFq3fXNForthQtgJHJsej_KkXQHGIjTbaOk&usqp=CAU" alt="nissan">
+                    <p>Nissan</p>
+                </div>
+                <div class="car-type-card">
+                    <img src="https://i.pinimg.com/736x/da/9c/a5/da9ca5610b6a94b59294e9cc37657cb1.jpg" alt="honda">
+                    <p>Honda</p>
+                </div>
+                <div class="car-type-card">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/BMW-Logo.png" alt="bmw">
+                    <p>BMW</p>
+                </div>
+                <div class="car-type-card">
+                    <img src="https://di-uploads-pod3.dealerinspire.com/vindeversautohausofsylvania/uploads/2018/10/Audi-Logo-Banner.png" alt="audi">
+                    <p>Audi</p>
+                </div>
+                <div class="car-type-card">
+                    <img src="https://thumbs.dreamstime.com/b/mercedes-benz-logo-transparent-background-vector-illustration-german-luxury-commercial-vehicle-automotive-brand-313266429.jpg" alt="benz">
+                    <p>Mercedes Benz</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <!-- Logo & Slogan -->
+          <div class="logo">MEGA CITY CAB</div>
+          <div class="slogan">Cab Service Company</div>
+
+          <!-- Menu Sections -->
+          <div class="menu">
+              <div class="menu-section">
+                  <a href="Terms.html">Terms & Conditions</a>
+                  <a href="Blog.html">Blog</a>
+              </div>
+              <div class="menu-section">
+                  <a href="Feedback.html">Feedback</a>
+                  <a href="Support.html">Support</a>
+              </div>
+              <div class="menu-section">
+                  <a href="About.html">About Us</a>
+                  <a href="Contact.html">Contact Us</a>
+              </div>
+          </div>
+
+          <!-- Divider -->
+          <hr>
+
+          <!-- Social Icons -->
+          <div class="social-icons">
+              <a href="#" aria-label="Facebook" class="mx-2"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Twitter" class="mx-2"><i class="bi bi-twitter"></i></a>
+              <a href="#" aria-label="Instagram" class="mx-2"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="Whatsapp" class="mx-2"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" aria-label="Youtube" class="mx-2"><i class="bi bi-youtube"></i></a>
+          </div>
+
+          <!-- Copyright -->
+          <div class="copyright">© Copyright. All rights reserved.</div>
+        </footer>
+
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  
+  <!-- navbar profile -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let profileIconContainer = document.getElementById("profileIconContainer");
+  
+        if (sessionStorage.getItem("isLoggedIn") === "true") {
+            profileIconContainer.innerHTML = `
+                <img src="https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg" 
+                     alt="Profile" 
+                     class="profile-icon" 
+                     onclick="window.location.href='Profile.html'">
+            `;
+        } else {
+            profileIconContainer.innerHTML = ""; // Hide profile icon if not logged in
+        }
+    });
+  </script>  
+
+  <!-- carousel -->
+<script>
+    // carousel images as constants
+    const images = [
+        'https://i.redd.it/4k-wallpaper-sports-cars-on-track-v0-rug2mqx929sa1.jpg?width=3840&format=pjpg&auto=webp&s=4f0f3bfc079cbbe382648febb3f6119f9a2073bc',
+        'https://c4.wallpaperflare.com/wallpaper/397/591/648/audi-r8-car-wallpaper-preview.jpg',
+        'https://imagescdn.dealercarsearch.com/DealerImages/11627/27257/fxslide3.jpg',
+      ];
+
+      // Get the carousel inner container
+      const carouselContent = document.getElementById('carouselContent');
+
+      // Generate carousel items dynamically
+      images.forEach((src, index) => {
+        const div = document.createElement('div');
+        div.className = `carousel-item${index === 0 ? ' active' : ''}`;
+        div.innerHTML = `<img src="${src}" class="d-block w-100" alt="Slide ${index + 1}">`;
+        carouselContent.appendChild(div);
+      });
+</script> 
+  
+</body>
+</html>
