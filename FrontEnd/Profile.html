@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Background styling */
+  .hero {
+    height: auto;
+    background-color: white;
+  }
+
+  /* Navigation bar styling */
+  .navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    background: rgb(51, 55, 55);
+  }
+
+  .navbar .logo {
+    padding: 0px 25px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: center; 
+  }
+
+  .navbar ul li {
+    display: inline;
+  }
+
+  .navbar ul li a {
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+
+  .navbar ul li a:hover {
+     color: #ff5b5b;  
+  }
+
+  /* Book Now Button */
+  .book-now {
+    margin-right: 15px;
+    display: flex;
+    color: #ff5b5b;   
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #ff5b5b; 
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .book-now:hover {
+    background: #ff5b5b;  
+    border: 1px solid black;
+    color: black;
+  }
+
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            margin-left: 35%;
+        }
+
+        .account-button {
+            background: linear-gradient(to bottom, #b8a385, #f4ad33);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            color: black;
+        }
+
+        .account-button:hover {
+            background: linear-gradient(to bottom, #997a4f, #c98104);
+        }
+
+        .logout-button {
+            background: rgb(69, 69, 69);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px ;
+            font-weight: bold;
+        }
+
+        .logout-button:hover {
+            background: rgb(44, 39, 39);
+        }
+
+
+        /* Profile Section */
+        .profile-container {
+            display: none;
+            margin-top: 30px;
+            text-align: left;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-details {
+            flex: 1;
+        }
+
+        .profile-details input {
+            border: 1px solid gray;
+            padding: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .profile-picture {
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-picture img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: #d3d3d3;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .change-password {
+            display: block;
+            margin-top: 10px;
+            color: blue;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .change-password:hover {
+            text-decoration: underline;
+        }
+
+
+        table {
+            width: 80%;
+            margin: auto;
+            margin-top: 100px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="uploads/logo.png"  class="logo-icon">
+            <a href="Home.html" class="logo-link">Mega City Cab</a>
+        </div>
+        <ul>
+            <li><a href="Home.html">HOME</a></li>
+            <li><a href="CarDisplay.html">RENTALS</a></li>
+            <li><a href="About.html">ABOUT</a></li>
+            <li><a href="Contact.html">CONTACT</a></li>
+        </ul>
+        <button class="book-now" onclick="window.location.href='CarDisplay.html'">Book Now</button>
+        <div id="profileIconContainer"></div>
+    </div>
+
+
+    <h2 class="title">My Account</h2>
+
+    <div class="button-container">
+        <button class="account-button" id="profileBtn">Profile</button>
+        <button class="account-button" id="bookingBtn">Booking History</button>
+        <button class="logout-button" onclick="confirmLogout()">Logout 🚪</button>
+    </div>
+    
+
+    <div class="profile-container" id="profileSection">
+        <div class="profile-details">
+            <div class="profile-picture">
+                <input type="file" id="uploadPhoto" accept="image/*" style="display: none;">
+                <img src="https://static.vecteezy.com/system/resources/previews/020/213/738/non_2x/add-profile-picture-icon-upload-photo-of-social-media-user-vector.jpg" id="profilePic" alt="Profile">
+        </div>
+
+            <label>First Name:</label>
+            <input type="text" id="firstName" value="Jhone">
+
+            <label>Last Name:</label>
+            <input type="text" id="lastName" value="Smith">
+
+            <label>NIC / Passport:</label>
+            <input type="text" id="passport" value="2003456">
+
+            <label>Phone Number:</label>
+            <input type="text" id="phoneNumber" value="112334567">
+
+            <label>Secondary Phone Number:</label>
+            <input type="text" id="secondaryPhone" value="22134567">
+
+            <label>Email:</label>
+            <input type="email" id="email" value="jonesmith@gmail.com">
+
+            <button class="save-btn" id="saveBtn">Save Changes</button>
+            <a href="#" class="change-password">Change password</a>
+        </div>
+    </div>
+
+       <!-- Booking History Section -->
+       <div class="booking-history" id="historySection">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking No</th>
+                        <th>Car Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Destination</th>
+                        <th>With Driver</th>
+                        <th>Payment Method</th>
+                        <th>Paid Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+       </div>
+
+
+<!-- navbar profile -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let profileIconContainer = document.getElementById("profileIconContainer");
+  
+        if (sessionStorage.getItem("isLoggedIn") === "true") {
+            profileIconContainer.innerHTML = `
+                <img src="https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg" 
+                     alt="Profile" 
+                     class="profile-icon" 
+                     onclick="window.location.href='Profile.html'">
+            `;
+        } else {
+            profileIconContainer.innerHTML = ""; // Hide profile icon if not logged in
+        }
+    });
+</script>
+
+<!-- profile  -->
+<script>
+        // Initial Profile Data (modifiable)
+        const profileData = {
+            firstName: "Jhone",
+            lastName: "Smith",
+            passport: "2003456",
+            phoneNumber: "112334567",
+            secondaryPhone: "22134567",
+            email: "jonesmith@gmail.com"
+        };
+
+        document.getElementById("profileBtn").addEventListener("click", function() {
+            document.getElementById("profileSection").style.display = "flex";
+        });
+
+
+        // Profile Picture Upload
+        document.getElementById("profilePic").addEventListener("click", function() {
+            document.getElementById("uploadPhoto").click();
+        });
+
+        document.getElementById("uploadPhoto").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("profilePic").src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+</script>
+
+<!-- booking history -->
+<script>
+
+const bookingData = [
+{ bookingNo: "1101", carName: "Toyota Camry", startDate: "2024-03-10", endDate: "2024-03-15", destination: "Los Angeles", withDriver: "Yes", paymentMethod: "Credit Card", paidAmount: "$500" },
+{ bookingNo: "0202", carName: "Honda Civic", startDate: "2024-04-05", endDate: "2024-04-08", destination: "San Francisco", withDriver: "No", paymentMethod: "PayPal", paidAmount: "$320" },
+{ bookingNo: "0033", carName: "Ford Mustang", startDate: "2024-05-12", endDate: "2024-05-18", destination: "Las Vegas", withDriver: "Yes", paymentMethod: "Bank Transfer", paidAmount: "$800" }
+];
+
+// Function to populate table data
+function populateTable() {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = ""; // Clear previous data
+
+    bookingData.forEach((booking) => {
+        const row = `
+            <tr>
+                <td>${booking.bookingNo}</td>
+                <td>${booking.carName}</td>
+                <td>${booking.startDate}</td>
+                <td>${booking.endDate}</td>
+                <td>${booking.destination}</td>
+                <td>${booking.withDriver}</td>
+                <td>${booking.paymentMethod}</td>
+                <td>${booking.paidAmount}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
+// Event listener for Profile button
+document.getElementById("profileBtn").addEventListener("click", function() {
+    document.getElementById("profileSection").style.display = "flex";
+    document.getElementById("historySection").style.display = "none"; // Hide booking history
+});
+
+// Event listener for Booking History button
+document.getElementById("bookingBtn").addEventListener("click", function() {
+    document.getElementById("profileSection").style.display = "none"; // Hide profile section
+    document.getElementById("historySection").style.display = "block";
+    populateTable();
+});
+
+// Default view settings
+document.getElementById("historySection").style.display = "none"; // Hide booking history initially
+
+</script>
+
+<script>
+    function confirmLogout() {
+        let confirmAction = confirm("Are you sure you want to log out?");
+        if (confirmAction) {
+            // Remove login status
+            sessionStorage.removeItem("isLoggedIn");
+
+            // Redirect to home page
+            window.location.href = "Home.html";
+        }
+    }
+</script>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2b2b;
+}
+
+.dashboard{
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 300px;
+    background-color: #2c2b2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+/* Menu Styles */
+.menu {
+    margin-top: 30px;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgb(65, 64, 64);
+}
+
+.submenu {
+        list-style-type: none;
+        padding-left: 20px;
+        display: none;
+}
+
+.menu-item:hover + .submenu,
+.submenu:hover {
+    display: block;
+}
+
+.icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Logout Button */
+.logout {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: rgb(65, 64, 64);
+}
+
+
+
+
+.rightside{
+    background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+    background-size: cover;
+    width: 100%;
+    min-height: 700px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid black;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .search-container input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid black;
+        }
+
+        .search-container button {
+            background-color: lightgray;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-group {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .add-btn {
+            background-color: lightgreen;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .clear-btn {
+            background-color: lightblue;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #customersSection h3{
+            text-align: center;
+        }
+
+        .btn-container {
+            margin-bottom: 20px;
+            margin-left: 500px;
+        }
+
+        .btn {
+            background-color: #ffcc66;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #ffaa33;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item" onclick="location.href='Dashboard.html'">
+                        <span class="icon">🏠</span> Dashboard
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarAvailability.html'">
+                        <span class="icon">📅</span> Car Availability
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarBooking.html'">
+                        <span class="icon">📖</span> Bookings
+                    </li>
+        
+                    <!-- Pages Section with Toggle -->
+                    <li class="menu-item" onclick="toggleSubmenu()">
+                        <span class="icon">📄</span> Pages ▼
+                    </li>
+                    <ul class="submenu" id="pagesSubmenu">
+                        <li class="menu-item" onclick="location.href='CarDetails.html'">Cars</li>
+                        <li class="menu-item" onclick="location.href='DriverDetails.html'">Driver Details</li>
+                        <li class="menu-item" onclick="location.href='DriverAvailability.html'">Driver Availability</li>
+                        <li class="menu-item" onclick="location.href='Aboutpage.html'">About</li>
+                        <li class="menu-item" onclick="location.href='Contactpage.html'">Contact</li>
+                        <li class="menu-item" onclick="location.href='Homecarousel.html'">Home Carousel</li>
+                    </ul>
+        
+                    <li class="menu-item" onclick="location.href='UserDetails.html'">
+                        <span class="icon">👤</span> Users
+                    </li>
+        
+                    <li class="menu-item" onclick="location.href='Messages.html'">
+                        <span class="icon">💬</span> Feedback & Messages
+                    </li>
+                </ul>
+            </nav>
+        
+            <!-- Logout Button -->
+            <div class="logout" onclick="location.href='../Login.html'">
+                <span class="icon">🚪</span> Logout
+            </div>
+        </div>
+
+        <div class="rightside">
+            <h2>Users</h2>
+
+            <div class="btn-container">
+                <button class="btn" onclick="showAdmins()">Admins</button>
+                <button class="btn" onclick="showCustomers()">Customers</button>
+            </div>
+
+            <!-- admin section -->
+            <div class="adminsection">
+
+                <h2>Add New Admins</h2>
+            
+                <div class="form-container">
+                    <form id="adminForm">
+                        <label>First name</label>
+                        <input type="text" id="firstName" required>
+            
+                        <label>Second Name</label>
+                        <input type="text" id="secondName" required>
+            
+                        <label>Phone No</label>
+                        <input type="text" id="phoneNo" required>
+            
+                        <label>NIC</label>
+                        <input type="text" id="nic" required>
+            
+                        <label>Position</label>
+                        <input type="text" id="position" required>
+            
+                        <label>Email</label>
+                        <input type="email" id="email" required>
+            
+                        <label>Password</label>
+                        <input type="password" id="password" required>
+            
+                        <div class="btn-group">
+                            <button type="button" class="add-btn" id="addAdminBtn">Add</button>
+                            <button type="reset" class="clear-btn">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            
+                <div class="search-container">
+                    <input type="text" class="search-box" id="searchNIC" placeholder="Search by NIC">
+                    <button class="search-btn" onclick="searchAdmin()">Search</button>
+                </div>
+            
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Admin ID</th>
+                            <th>First name</th>
+                            <th>Second Name</th>
+                            <th>Phone No</th>
+                            <th>NIC</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTable">
+                        <!-- Admin list will be added here dynamically -->
+                    </tbody>
+                </table>
+            
+            </div> 
+
+            <!-- customer section -->
+            <div id="customersSection" class="hidden">
+                <h3>Customer Details</h3>
+
+                <div class="search-container">
+                    <input type="text" id="searchNIC" placeholder="Search by NIC or CustomerId">
+                    <button onclick="searchCustomer()">Search</button>
+                </div>
+
+                <table id="customerTable">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>First Name</th>
+                            <th>Second Name</th>
+                            <th>NIC or Passport</th>
+                            <th>Phone No</th>
+                            <th>Secondary Phone No</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Profile</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- Data will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+
+    
+<!-- sidebar -->
+<script>
+    function toggleSubmenu() {
+        let submenu = document.getElementById("pagesSubmenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+<script>
+        // Sample Admin Data
+        const admins = [
+            { id: "A001", firstName: "John", lastName: "Doe", phone: "123456", nic: "987654321V", position: "Manager", email: "john@example.com", password: "admin123" },
+            { id: "A002", firstName: "Alice", lastName: "Brown", phone: "789456", nic: "123456789V", position: "Supervisor", email: "alice@example.com", password: "admin456" }
+        ];
+    
+        // Sample Customer Data
+        const customers = [
+            { id: "C001", firstName: "Harry", lastName: "Smith", nic: "20002", phone: "12345", secPhone: "67890", address: "65/1", email: "s@gmail.com", password: "123", profile: "profile.jpg" },
+            { id: "C002", firstName: "Emma", lastName: "Johnson", nic: "30003", phone: "54321", secPhone: "09876", address: "no 85", email: "emma@gmail.com", password: "456", profile: "profile2.jpg" }
+        ];
+    
+        // Load Admin Data into Table
+        function loadAdmins(data) {
+            const tbody = document.getElementById("adminTable");
+            tbody.innerHTML = ""; // Clear table before loading new data
+    
+            data.forEach(admin => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${admin.id}</td>
+                    <td>${admin.firstName}</td>
+                    <td>${admin.lastName}</td>
+                    <td>${admin.phone}</td>
+                    <td>${admin.nic}</td>
+                    <td>${admin.position}</td>
+                    <td>${admin.email}</td>
+                    <td>${admin.password}</td>
+                    <td><button class="btn" onclick="editAdmin('${admin.nic}')">Update</button></td>
+                    <td><button class="delete-btn" onclick="deleteAdmin('${admin.nic}')">Delete</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    
+    
+        // Load Customer Data into Table
+        function loadCustomers(data) {
+            const tbody = document.getElementById("customerTableBody");
+            tbody.innerHTML = ""; // Clear table before loading new data
+    
+            data.forEach(customer => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${customer.id}</td>
+                    <td>${customer.firstName}</td>
+                    <td>${customer.lastName}</td>
+                    <td>${customer.nic}</td>
+                    <td>${customer.phone}</td>
+                    <td>${customer.secPhone}</td>
+                    <td>${customer.address}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.password}</td>
+                    <td>${customer.profile ? `<img src="${customer.profile}" alt="Profile" class="profile-img">` : ""}</td>
+                    <td><button class="delete-btn" onclick="deleteCustomer('${customer.id}')">Delete</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    
+    
+        // Show Admin Section and Hide Customers
+        function showAdmins() {
+            document.getElementById("customersSection").classList.add("hidden");
+            document.querySelector(".adminsection").classList.remove("hidden");
+            loadAdmins(admins);
+        }
+    
+        // Show Customers Section and Hide Admins
+        function showCustomers() {
+            document.getElementById("customersSection").classList.remove("hidden");
+            document.querySelector(".adminsection").classList.add("hidden");
+            loadCustomers(customers);
+        }
+    
+        // Load initial data when page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            loadAdmins(admins);
+            loadCustomers(customers);
+        });
+</script>
+    
+
+</body>
+</html>

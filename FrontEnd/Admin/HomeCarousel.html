@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Carousel</title>
+<style>
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2b2b;
+        }
+        
+        .dashboard{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            width: 300px;
+            background-color: #2c2b2b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+          }
+        
+          .logo-icon {
+            width: 40px;
+            height: 40px;
+          }
+        
+          .logo-link{
+            text-decoration: none;
+            cursor: pointer;
+            color: #ff4d4d;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            font-family: cursive;
+            font-style: italic;
+            text-transform: uppercase;
+          }
+        
+        /* Menu Styles */
+        .menu {
+            margin-top: 30px;
+        }
+        
+        .menu ul {
+            list-style: none;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        .submenu {
+                list-style-type: none;
+                padding-left: 20px;
+                display: none;
+        }
+        
+        .menu-item:hover + .submenu,
+        .submenu:hover {
+            display: block;
+        }
+        
+        .icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Logout Button */
+        .logout {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        
+        .logout:hover {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        
+        
+        
+        .rightside{
+            background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+            background-size: cover;
+            width: 100%;
+            min-height: 700px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+.rightside .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 60%;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.update-btn {
+    background-color: gold;
+}
+
+.delete-btn {
+    background-color: lightcoral;
+}
+
+.upload-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#fileInput {
+    margin: 10px;
+}
+
+#addCarouselBtn{
+    background: rgb(202, 195, 195);
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item" onclick="location.href='Dashboard.html'">
+                        <span class="icon">🏠</span> Dashboard
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarAvailability.html'">
+                        <span class="icon">📅</span> Car Availability
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarBooking.html'">
+                        <span class="icon">📖</span> Bookings
+                    </li>
+        
+                    <!-- Pages Section with Toggle -->
+                    <li class="menu-item" onclick="toggleSubmenu()">
+                        <span class="icon">📄</span> Pages ▼
+                    </li>
+                    <ul class="submenu" id="pagesSubmenu">
+                        <li class="menu-item" onclick="location.href='CarDetails.html'">Cars</li>
+                        <li class="menu-item" onclick="location.href='DriverDetails.html'">Driver Details</li>
+                        <li class="menu-item" onclick="location.href='DriverAvailability.html'">Driver Availability</li>
+                        <li class="menu-item" onclick="location.href='Aboutpage.html'">About</li>
+                        <li class="menu-item" onclick="location.href='Contactpage.html'">Contact</li>
+                        <li class="menu-item" onclick="location.href='Homecarousel.html'">Home Carousel</li>
+                    </ul>
+        
+                    <li class="menu-item" onclick="location.href='UserDetails.html'">
+                        <span class="icon">👤</span> Users
+                    </li>
+        
+                    <li class="menu-item" onclick="location.href='Messages.html'">
+                        <span class="icon">💬</span> Feedback & Messages
+                    </li>
+                </ul>
+            </nav>
+        
+            <!-- Logout Button -->
+            <div class="logout" onclick="location.href='../Login.html'">
+                <span class="icon">🚪</span> Logout
+            </div>
+        </div>
+
+        <div class="rightside">
+            <h2 class="title">Homepage Carousel</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="carouselTable"></tbody>
+            </table>
+
+            <!-- Add Carousel Section -->
+            <div class="upload-container">
+                <label>Add New Carousel</label>
+                <input type="file" id="fileInput">
+                <button id="addCarouselBtn">Add Carousel</button>
+            </div>
+        </div>
+    </div> 
+
+   
+<!-- sidebar -->
+<script>
+    function toggleSubmenu() {
+        let submenu = document.getElementById("pagesSubmenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+</script>    
+
+<script>
+        let carouselData = [
+    { image: "https://via.placeholder.com/100x70?text=Image1" },
+    { image: "https://via.placeholder.com/100x70?text=Image2" },
+    { image: "https://via.placeholder.com/100x70?text=Image3" }
+];
+
+const tableBody = document.getElementById("carouselTable");
+const fileInput = document.getElementById("fileInput");
+const addCarouselBtn = document.getElementById("addCarouselBtn");
+
+// Function to update IDs after changes
+function updateIds() {
+    carouselData.forEach((item, index) => {
+        item.id = (index + 1).toString().padStart(2, "0"); // Ensure IDs are always sequential
+    });
+}
+
+// Function to load carousel data
+function loadCarousel() {
+    updateIds();
+    tableBody.innerHTML = "";
+    carouselData.forEach((item, index) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${item.id}</td>
+            <td>
+                <div class="image-wrapper">
+                    ${item.image ? `<img src="${item.image}" id="img-${index}"> 
+                    <span class="delete-icon" onclick="removeImage(${index})">✖</span>` 
+                    : `<input type="file" id="file-${index}" onchange="updateImage(${index})">`}
+                </div>
+            </td>
+            <td><button class="update-btn" onclick="updateImage(${index})">Update</button></td>
+            <td><button class="delete-btn" onclick="deleteRow(${index})">Delete</button></td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to remove an image and allow re-upload
+function removeImage(index) {
+    carouselData[index].image = "";
+    loadCarousel();
+}
+
+// Function to update an image in an existing row
+function updateImage(index) {
+    const fileInput = document.getElementById(`file-${index}`);
+    if (fileInput && fileInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            carouselData[index].image = e.target.result;
+            loadCarousel();
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
+
+// Function to delete an entire row and reorder IDs
+function deleteRow(index) {
+    carouselData.splice(index, 1); // Remove the item
+    loadCarousel(); // Reload and reassign IDs
+}
+
+// Load the table data initially
+loadCarousel();
+
+</script>
+
+</body>
+</html>

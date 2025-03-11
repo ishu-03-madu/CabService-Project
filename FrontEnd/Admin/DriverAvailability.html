@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Availability</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2b2b;
+        }
+        
+        .dashboard{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            width: 300px;
+            background-color: #2c2b2b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+          }
+        
+          .logo-icon {
+            width: 40px;
+            height: 40px;
+          }
+        
+          .logo-link{
+            text-decoration: none;
+            cursor: pointer;
+            color: #ff4d4d;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            font-family: cursive;
+            font-style: italic;
+            text-transform: uppercase;
+          }
+        
+        /* Menu Styles */
+        .menu {
+            margin-top: 30px;
+        }
+        
+        .menu ul {
+            list-style: none;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        .submenu {
+                list-style-type: none;
+                padding-left: 20px;
+                display: none;
+        }
+        
+        .menu-item:hover + .submenu,
+        .submenu:hover {
+            display: block;
+        }
+        
+        .icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Logout Button */
+        .logout {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        
+        .logout:hover {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        
+        
+        
+        .rightside{
+            background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+            background-size: cover;
+            width: 100%;
+            min-height: 700px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .rightside h2 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid #8e8d8d;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #ccc;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-done {
+            background-color: lightgreen;
+        }
+
+        .btn-update {
+            background-color: orange;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-box {
+            margin-left: 40%;
+            padding: 8px;
+            width: 250px;
+            font-size: 14px;
+        }
+
+        .salary-section {
+            margin-top: 30px;
+            font-size: 16px;
+            margin-left: 20%;
+        }
+        .salary-section label{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .date-picker {
+            padding: 6px;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .salary-box {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .driveridsalary{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item" onclick="location.href='Dashboard.html'">
+                        <span class="icon">🏠</span> Dashboard
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarAvailability.html'">
+                        <span class="icon">📅</span> Car Availability
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarBooking.html'">
+                        <span class="icon">📖</span> Bookings
+                    </li>
+        
+                    <!-- Pages Section with Toggle -->
+                    <li class="menu-item" onclick="toggleSubmenu()">
+                        <span class="icon">📄</span> Pages ▼
+                    </li>
+                    <ul class="submenu" id="pagesSubmenu">
+                        <li class="menu-item" onclick="location.href='CarDetails.html'">Cars</li>
+                        <li class="menu-item" onclick="location.href='DriverDetails.html'">Driver Details</li>
+                        <li class="menu-item" onclick="location.href='DriverAvailability.html'">Driver Availability</li>
+                        <li class="menu-item" onclick="location.href='Aboutpage.html'">About</li>
+                        <li class="menu-item" onclick="location.href='Contactpage.html'">Contact</li>
+                        <li class="menu-item" onclick="location.href='Homecarousel.html'">Home Carousel</li>
+                    </ul>
+        
+                    <li class="menu-item" onclick="location.href='UserDetails.html'">
+                        <span class="icon">👤</span> Users
+                    </li>
+        
+                    <li class="menu-item" onclick="location.href='Messages.html'">
+                        <span class="icon">💬</span> Feedback & Messages
+                    </li>
+                </ul>
+            </nav>
+        
+            <!-- Logout Button -->
+            <div class="logout" onclick="location.href='../Login.html'">
+                <span class="icon">🚪</span> Logout
+            </div>
+        </div>
+
+        <div class="rightside">
+            <h2>Driver Availability</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Driver ID</th>
+                        <th>Availability</th>
+                        <th>Booking No</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>
+                            <select>
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
+                        </td>
+                        <td>BK-123</td>
+                        <td>
+                            <button class="btn btn-done">Done</button>
+                            <button class="btn btn-update">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>
+                            <select>
+                                <option value="available">Available</option>
+                                <option value="unavailable" selected>Unavailable</option>
+                            </select>
+                        </td>
+                        <td>BK-456</td>
+                        <td>
+                            <button class="btn btn-done">Done</button>
+                            <button class="btn btn-update">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Driver History</h2>
+            <input type="text" class="search-box" placeholder="Search by NIC or Driver ID">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Driver ID</th>
+                        <th>NIC</th>
+                        <th>First Name</th>
+                        <th>Booking ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Ride Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>123456789V</td>
+                        <td>John</td>
+                        <td>BK-123</td>
+                        <td>01/03/2024</td>
+                        <td>02/03/2024</td>
+                        <td>5000</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>987654321V</td>
+                        <td>Jane</td>
+                        <td>BK-456</td>
+                        <td>05/03/2024</td>
+                        <td>07/03/2024</td>
+                        <td>7000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <div class="salary-section">
+                <label>Total Salary:</label>
+                <input type="text" class="driveridsalary" placeholder="Driver ID">
+                <input type="date" class="date-picker">
+                <input type="date" class="date-picker">
+                <br>
+                <input type="text" class="salary-box" placeholder="Rs.">
+            </div>
+        </div>
+    </div>
+
+<!-- sidebar -->
+<script>
+    function toggleSubmenu() {
+        let submenu = document.getElementById("pagesSubmenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+</script>    
+
+</body>
+</html>

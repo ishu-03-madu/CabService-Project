@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url("https://t4.ftcdn.net/jpg/08/20/76/55/360_F_820765573_OFUfHdRD7kv4E81NZSnM7wSSeL3ycjqx.jpg");
+      background-size: cover;
+      background-repeat: no-repeat; 
+      background-position: center;
+    }
+
+    .feedback-container {
+      position: relative;
+      background-color: white; 
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      height: 450px;
+      text-align: center;
+      border: 2px solid rgb(23, 103, 143);
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      font-size: 1.7rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .close-button:hover {
+      color: #0c0c0c;
+      background: #bab7b7;
+    }
+
+    .feedback-container h1 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 50px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .feedback-container p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .stars svg {
+      width: 30px;
+      height: 30px;
+      fill: #ccc; /* Default star color */
+      cursor: pointer;
+    }
+
+    .stars svg.active {
+      fill: #f1c40f; /* Highlighted star color */
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      resize: none;
+    }
+
+    button {
+      background-color: rgb(140, 138, 138); 
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333; 
+    }
+  </style>
+</head>
+
+<body>
+  <div class="feedback-container">
+    <button class="close-button" onclick="window.location.href='Home.html'">×</button>
+    <h1>We value your opinion.</h1>
+    <p>How would you rate your overall experience?</p>
+    <div class="stars" id="starRating">
+      <svg data-rating="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73-1.64 7.03L12 17.27z"/>
+      </svg>
+      <svg data-rating="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73-1.64 7.03L12 17.27z"/>
+      </svg>
+      <svg data-rating="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73-1.64 7.03L12 17.27z"/>
+      </svg>
+      <svg data-rating="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73-1.64 7.03L12 17.27z"/>
+      </svg>
+      <svg data-rating="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73-1.64 7.03L12 17.27z"/>
+      </svg>
+    </div>
+    <p>Kindly take a moment to tell us what you think.</p>
+    <textarea placeholder="Your feedback..."></textarea>
+    <button>Share my feedback</button>
+  </div>
+
+<script>
+    const stars = document.querySelectorAll('.stars svg');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-rating');
+        updateStars();
+      });
+    });
+
+    function updateStars() {
+      stars.forEach(star => {
+        const rating = star.getAttribute('data-rating');
+        if (rating <= selectedRating) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+    }
+
+    function closeForm() {
+      document.querySelector('.feedback-container').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

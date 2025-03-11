@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages & Feedbacks</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2b2b;
+}
+
+.dashboard{
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 300px;
+    background-color: #2c2b2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ff4d4d;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+/* Menu Styles */
+.menu {
+    margin-top: 30px;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgb(65, 64, 64);
+}
+
+.submenu {
+        list-style-type: none;
+        padding-left: 20px;
+        display: none;
+}
+
+.menu-item:hover + .submenu,
+.submenu:hover {
+    display: block;
+}
+
+.icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Logout Button */
+.logout {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: rgb(65, 64, 64);
+}
+
+
+
+
+.rightside{
+    background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+    background-size: cover;
+    width: 100%;
+    min-height: 700px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.rightside h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.reply-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reply-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.star {
+    color: gold;
+    font-size: 18px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup textarea {
+    width: 90%;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item" onclick="location.href='Dashboard.html'">
+                        <span class="icon">🏠</span> Dashboard
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarAvailability.html'">
+                        <span class="icon">📅</span> Car Availability
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarBooking.html'">
+                        <span class="icon">📖</span> Bookings
+                    </li>
+        
+                    <!-- Pages Section with Toggle -->
+                    <li class="menu-item" onclick="toggleSubmenu()">
+                        <span class="icon">📄</span> Pages ▼
+                    </li>
+                    <ul class="submenu" id="pagesSubmenu">
+                        <li class="menu-item" onclick="location.href='CarDetails.html'">Cars</li>
+                        <li class="menu-item" onclick="location.href='DriverDetails.html'">Driver Details</li>
+                        <li class="menu-item" onclick="location.href='DriverAvailability.html'">Driver Availability</li>
+                        <li class="menu-item" onclick="location.href='Aboutpage.html'">About</li>
+                        <li class="menu-item" onclick="location.href='Contactpage.html'">Contact</li>
+                        <li class="menu-item" onclick="location.href='Homecarousel.html'">Home Carousel</li>
+                    </ul>
+        
+                    <li class="menu-item" onclick="location.href='UserDetails.html'">
+                        <span class="icon">👤</span> Users
+                    </li>
+        
+                    <li class="menu-item" onclick="location.href='Messages.html'">
+                        <span class="icon">💬</span> Feedback & Messages
+                    </li>
+                </ul>
+            </nav>
+        
+            <!-- Logout Button -->
+            <div class="logout" onclick="location.href='../Login.html'">
+                <span class="icon">🚪</span> Logout
+            </div>
+        </div>
+
+        <div class="rightside">
+            <h2>Messages</h2>
+            <table class="message-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Reply</th>
+                    </tr>
+                </thead>
+                <tbody id="messageBody">
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+
+            <h2>Feedbacks</h2>
+            <table class="feedback-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Rate</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody id="feedbackBody">
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+
+            <!-- Reply Popup -->
+            <div id="replyPopup" class="popup">
+                <div class="popup-content">
+                    <h3>Reply</h3>
+                    <textarea id="replyText" placeholder="Type here..."></textarea>
+                    <button onclick="sendReply()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+ 
+<!-- sidebar -->
+<script>
+    function toggleSubmenu() {
+        let submenu = document.getElementById("pagesSubmenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+</script>    
+
+<script>
+      // Message Data
+const messages = [
+    { name: "John Doe", email: "john@example.com", subject: "Booking Inquiry", message: "Can I book for 3 nights?", replied: false },
+    { name: "Jane Smith", email: "jane@example.com", subject: "Availability", message: "Is room 205 available?", replied: false },
+    { name: "Alice Brown", email: "alice@example.com", subject: "Discounts", message: "Any offers this season?", replied: false }
+];
+
+// Feedback Data
+const feedbacks = [
+    { name: "Emily White", profile: "Customer", rate: 5, feedback: "Good experience" },
+    { name: "Robert Green", profile: "Customer", rate: 3, feedback: "Excellent service!" },
+    { name: "Anna Brown", profile: "Client", rate: 4, feedback: "Average, needs improvement" }
+];
+
+// Load Messages
+const messageBody = document.getElementById("messageBody");
+messages.forEach((msg, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${msg.name}</td>
+        <td>${msg.email}</td>
+        <td>${msg.subject}</td>
+        <td>${msg.message}</td>
+        <td>
+            <button class="reply-button" id="replyBtn${index}" onclick="openReply(${index})">Reply</button>
+        </td>
+    `;
+    messageBody.appendChild(row);
+});
+
+// Load Feedbacks
+const feedbackBody = document.getElementById("feedbackBody");
+feedbacks.forEach(fb => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${fb.name}</td>
+        <td>${fb.profile}</td>
+        <td>${getStars(fb.rate)}</td>
+        <td>${fb.feedback}</td>
+    `;
+    feedbackBody.appendChild(row);
+});
+
+// Function to generate stars
+function getStars(rating) {
+    return "★".repeat(rating) + "☆".repeat(5 - rating);
+}
+
+// Reply Handling
+let currentReplyIndex = null;
+
+function openReply(index) {
+    currentReplyIndex = index;
+    document.getElementById("replyText").value = ""; // Clear previous input
+    document.getElementById("replyPopup").style.display = "block";
+}
+
+function sendReply() {
+    if (currentReplyIndex !== null) {
+        const replyText = document.getElementById("replyText").value.trim();
+        if (replyText !== "") {
+            const replyCell = document.querySelector(`#replyBtn${currentReplyIndex}`).parentNode;
+            replyCell.innerHTML = `<strong>${replyText}</strong>`;
+            document.getElementById("replyPopup").style.display = "none"; // ✅ Closes popup
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

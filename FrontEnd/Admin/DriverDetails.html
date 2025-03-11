@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2b2b;
+        }
+        
+        .dashboard{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            width: 300px;
+            background-color: #2c2b2b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+          }
+        
+          .logo-icon {
+            width: 40px;
+            height: 40px;
+          }
+        
+          .logo-link{
+            text-decoration: none;
+            cursor: pointer;
+            color: #ff4d4d;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            font-family: cursive;
+            font-style: italic;
+            text-transform: uppercase;
+          }
+        
+        /* Menu Styles */
+        .menu {
+            margin-top: 30px;
+        }
+        
+        .menu ul {
+            list-style: none;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        .submenu {
+                list-style-type: none;
+                padding-left: 20px;
+                display: none;
+        }
+        
+        .menu-item:hover + .submenu,
+        .submenu:hover {
+            display: block;
+        }
+        
+        .icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Logout Button */
+        .logout {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        
+        .logout:hover {
+            background-color: rgb(65, 64, 64);
+        }
+        
+        
+        
+        
+        .rightside{
+            background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+            background-size: cover;
+            width: 100%;
+            min-height: 700px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .rightside h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            background: #c6c5c5;
+            width: 700px;
+            padding: 10px;
+            margin-left: 20%;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            width: 120px;
+            text-align: center;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .form-group input {
+            width: 400px;
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid black;
+        }
+
+        .button-container {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .btn-add {
+            background-color: rgb(111, 194, 111);
+        }
+
+        .btn-clear {
+            background-color: rgb(160, 162, 163);
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid #8e8d8d;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #ccc;
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #eaeaea;
+        }
+
+        .btn-action {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 3px;
+        }
+
+        .btn-update {
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        
+            <!-- Navigation Menu -->
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item" onclick="location.href='Dashboard.html'">
+                        <span class="icon">🏠</span> Dashboard
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarAvailability.html'">
+                        <span class="icon">📅</span> Car Availability
+                    </li>
+                    <li class="menu-item" onclick="location.href='CarBooking.html'">
+                        <span class="icon">📖</span> Bookings
+                    </li>
+        
+                    <!-- Pages Section with Toggle -->
+                    <li class="menu-item" onclick="toggleSubmenu()">
+                        <span class="icon">📄</span> Pages ▼
+                    </li>
+                    <ul class="submenu" id="pagesSubmenu">
+                        <li class="menu-item" onclick="location.href='CarDetails.html'">Cars</li>
+                        <li class="menu-item" onclick="location.href='DriverDetails.html'">Driver Details</li>
+                        <li class="menu-item" onclick="location.href='DriverAvailability.html'">Driver Availability</li>
+                        <li class="menu-item" onclick="location.href='Aboutpage.html'">About</li>
+                        <li class="menu-item" onclick="location.href='Contactpage.html'">Contact</li>
+                        <li class="menu-item" onclick="location.href='Homecarousel.html'">Home Carousel</li>
+                    </ul>
+        
+                    <li class="menu-item" onclick="location.href='UserDetails.html'">
+                        <span class="icon">👤</span> Users
+                    </li>
+        
+                    <li class="menu-item" onclick="location.href='Messages.html'">
+                        <span class="icon">💬</span> Feedback & Messages
+                    </li>
+                </ul>
+            </nav>
+        
+            <!-- Logout Button -->
+            <div class="logout" onclick="location.href='../Login.html'">
+                <span class="icon">🚪</span> Logout
+            </div>
+        </div>
+
+        <div class="rightside">
+            <div class="form-container">
+                <h2>ADD NEW DRIVER</h2>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="secondName">Second Name</label>
+                    <input type="text" id="secondName">
+                </div>
+                <div class="form-group">
+                    <label for="nic">NIC</label>
+                    <input type="text" id="nic">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="form-group">
+                    <label for="licenseNo">License No</label>
+                    <input type="text" id="licenseNo">
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-add" onclick="addDriver()">Add</button>
+                    <button class="btn btn-clear" onclick="clearForm()">Clear</button>
+                </div>
+            </div>
+
+            <h2>DRIVER LIST</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Second Name</th>
+                        <th>NIC</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>License No</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="driver-table-body">
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- sidebar -->
+<script>
+    function toggleSubmenu() {
+        let submenu = document.getElementById("pagesSubmenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+<!-- for table     -->
+<script>
+        const drivers = [
+            { firstName: "John", secondName: "Doe", nic: "123456789V", phone: "0711234567", address: "Colombo", licenseNo: "B123456" },
+            { firstName: "Jane", secondName: "Smith", nic: "987654321V", phone: "0729876543", address: "Kandy", licenseNo: "C987654" }
+        ];
+
+        function renderTable() {
+            const tableBody = document.getElementById("driver-table-body");
+            tableBody.innerHTML = ""; // Clear table before re-rendering
+            
+            drivers.forEach((driver, index) => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${driver.firstName}</td>
+                        <td>${driver.secondName}</td>
+                        <td>${driver.nic}</td>
+                        <td>${driver.phone}</td>
+                        <td>${driver.address}</td>
+                        <td>${driver.licenseNo}</td>
+                        <td>
+                            <button class="btn-action btn-update" onclick="updateDriver(${index})">Update</button>
+                            <button class="btn-action btn-delete" onclick="deleteDriver(${index})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Render table on page load
+        renderTable();
+</script>
+
+</body>
+</html>

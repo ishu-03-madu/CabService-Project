@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Bookings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2b2b;
+        }
+        
+        .dashboard{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            width: 300px;
+            background-color: #2c2b2b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-link{
+            text-decoration: none;
+            cursor: pointer;
+            color: #ff4d4d;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            font-family: cursive;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+        
+        .rightside{
+            background-image: url(https://img.freepik.com/premium-vector/abstract-wireframe-technology-background-presentation-banner-cover_654662-5665.jpg);
+            background-size: cover;
+            width: 100%;
+            min-height: 700px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-container {
+            margin-bottom: 15px;
+            margin-left: 38%;
+        }
+
+        input {
+            padding: 8px;
+            width: 320px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 95%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid #8e8d8d;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #ccc;
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #eaeaea;
+        }
+
+        #bookingupdate{
+            background: rgb(125, 164, 125);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        #bookingremove{
+            background: rgb(217, 159, 136);
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="logo.png"  class="logo-icon">
+                <a class="logo-link">Mega City Cab</a>
+            </div>
+        </div>
+        <div class="rightside">
+            <h2>CAR BOOKINGS</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by Booking No or Customer nic..." onkeyup="filterBookings()">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking No</th>
+                        <th>Car No</th>
+                        <th>Customer NIC or Passport</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Destination (km)</th>
+                        <th>With Driver</th>
+                        <th>Paid / Due Amount</th>
+                        <th>Payment Status</th>
+                        <th>Extra Charges</th>
+                        <th>Extra Charges Status</th>
+                        <th>Refundable Amount</th>
+                        <th>Print Bill</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="booking-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!-- Data Rows -->
+<script>
+    const bookings = [
+        {
+            bookingNo: "B001",
+            carNo: "C123",
+            customerNIC: "123456",
+            startDate: "2025-03-01",
+            endDate: "2025-03-05",
+            destination: "120",
+            withDriver: "Yes",
+            paidAmount: "1000",
+            paymentStatus: "Online Payment Done",
+            extraCharges: "500",
+            extraChargesStatus: "Pending",
+            refundableAmount: "Pending",
+        }
+    ];
+
+    const tableBody = document.getElementById("booking-table-body");
+    bookings.forEach(booking => {
+        const row = `<tr>
+            <td>${booking.bookingNo}</td>
+            <td>${booking.carNo}</td>
+            <td>${booking.customerNIC}</td>
+            <td>${booking.startDate}</td>
+            <td>${booking.endDate}</td>
+            <td>${booking.destination}km</td>
+            <td>${booking.withDriver}</td>
+            <td>Rs.${booking.paidAmount}</td>
+            <td>
+                <select>
+                    <option>Online Payment Done</option>
+                    <option>Cash Payment</option>
+                    <option>Cash Payment Done</option>
+                </select>
+            </td>
+            <td>Rs.${booking.extraCharges}</td>
+            <td>
+                <select>
+                    <option>Pending</option>
+                    <option>Done</option>
+                    <option>No Charge</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option>Pending</option>
+                    <option>Done</option>
+                    <option>No Refund</option>
+                </select>
+            </td>
+            <td><button>View</button></td>
+            <td>
+                <button id="bookingupdate">Update</button>
+                <button id="bookingremove">Remove</button>
+            </td>
+        </tr>`;
+        tableBody.innerHTML += row;
+    });
+</script>
+
+
+</body>
+</html>
