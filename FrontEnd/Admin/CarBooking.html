@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Bookings</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Update Booking Data</title>
     <style>
         * {
             margin: 0;
@@ -122,50 +121,82 @@
             box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
             padding: 20px;
         }
-
+        .container {
+            margin: auto;
+        }
         h2 {
-            margin-top: 30px;
-            margin-bottom: 20px;
             text-align: center;
         }
-
-        .search-container {
-            margin-bottom: 15px;
-            margin-left: 38%;
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid black;
+            background: gainsboro;
+            max-width: 750px;
+            margin-left: 20%;
         }
-
-        input {
-            padding: 8px;
-            width: 320px;
-            font-size: 16px;
+        .form-group label {
+            width: 200px;
+            font-weight: bold;
         }
-
+        .form-group input, .form-group select {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .update-booking {
+            background-color: lightgreen;
+        }
         table {
-            width: 95%;
-            margin: 0 auto;
+            margin-top: 20px;
             border-collapse: collapse;
-            background: white;
-            color: black;
         }
-
         th, td {
-            border: 1px solid #8e8d8d;
+            border: 1px solid black;
             padding: 8px;
             text-align: center;
-            font-size: 14px;
         }
-
         th {
-            background: #ccc;
+            background-color: #f2f2f2;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
         }
 
-        tbody tr:nth-child(even) td {
-            background: #eaeaea;
+        .search-container input {
+            width: 40%;
+            padding: 10px;
+            border: 1px solid black;
+            margin-left: 30%;
+            margin-bottom: 10px;
+        }
+        .search-container button {
+            padding: 6px 12px;
+            margin-left: 5px;
+        }
+
+        #Detailstitle{
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-
     <div class="dashboard">
         <div class="sidebar">
             <!-- Logo Section -->
@@ -217,79 +248,173 @@
         </div>
 
         <div class="rightside">
-            <h2>CAR BOOKINGS</h2>
-
-            <!-- Search Box -->
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search by Booking No or Customer nic..." onkeyup="filterBookings()">
+            <div class="container">
+                <h2>Update Booking Data</h2>
+                <div class="search-container">
+                    <input type="text" placeholder="Search by Booking No or Customer NIC">
+                    <button>Search</button>
+                </div>
+        
+                <div class="form-group">
+                    <label>Booking No:</label>
+                    <input type="text" id="bookingNo">
+                </div>
+                <div class="form-group">
+                    <label>Car No:</label>
+                    <input type="text" id="carNo">
+                </div>
+                <div class="form-group">
+                    <label>Customer NIC/Passport:</label>
+                    <input type="text" id="customerNic">
+                </div>
+                <div class="form-group">
+                    <label>Start Date:</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label>End Date:</label>
+                    <input type="date" id="endDate">
+                </div>
+                <div class="form-group">
+                    <label>Designated Destination:</label>
+                    <input type="text" id="destination">
+                </div>
+                <div class="form-group">
+                    <label>Start KM:</label>
+                    <input type="text" id="startKm">
+                </div>
+                <div class="form-group">
+                    <label>End KM:</label>
+                    <input type="text" id="endKm">
+                </div>
+                <div class="form-group">
+                    <label>With Driver:</label>
+                    <select id="withDriver">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Driver Cost (Rs.):</label>
+                    <input type="text" id="drivercost">
+                </div>
+                <div class="form-group">
+                    <label>Paid Amount (Rs.):</label>
+                    <input type="text" id="paidAmount">
+                </div>
+                <div class="form-group">
+                    <label>Payment Status:</label>
+                    <select id="paymentStatus">
+                        <option>Online Payment Done</option>
+                        <option>Cash Payment</option>
+                        <option>Cash Payment Done</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Extra Charges (Rs.):</label>
+                    <input type="text" id="extraCharges">
+                </div>
+                <div class="form-group">
+                    <label>Extra Charges Status:</label>
+                    <select id="extraChargesStatus">
+                        <option>Pending</option>
+                        <option>Done</option>
+                        <option>No Charges</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Refundable Amount (Rs.):</label>
+                    <input type="text" id="refundableAmount">
+                </div>
+                <div class="form-group">
+                    <label>Refundable Status:</label>
+                    <select id="refundableStatus">
+                        <option>Pending</option>
+                        <option>Refundable Done</option>
+                        <option>No Refund</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Total Bill (Rs.):</label>
+                    <input type="text" id="totalBill">
+                </div>
+        
+                <div class="buttons">
+                    <button class="view-btn">View Bill</button>
+                    <button class="update-booking">Update</button>
+                </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Booking No</th>
-                        <th>Car No</th>
-                        <th>Customer NIC or Passport</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Destination (km)</th>
-                        <th>With Driver</th>
-                    </tr>
-                </thead>
-                <tbody id="booking-table-body">
-                    <!-- Data will be inserted dynamically -->
-                </tbody>
-            </table>
+
+                <h2 id="Detailstitle">Booking Details</h2>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search by Booking No or Customer nic..." onkeyup="filterBookings()">
+                </div>
+                <table id="bookingTable">
+                    <thead>
+                        <tr>
+                            <th>Booking No</th>
+                            <th>Car No</th>
+                            <th>Customer NIC</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Destination (km)</th>
+                            <th>Start KM</th>
+                            <th>End KM</th>
+                            <th>With Driver</th>
+                            <th>Driver Cost (Rs)</th>
+                            <th>Paid Amount (Rs)</th>
+                            <th>Payment Status</th>
+                            <th>Extra Charges (Rs)</th>
+                            <th>Extra Charges Status</th>
+                            <th>Refundable Amount (Rs)</th>
+                            <th>Refundable Status</th>
+                            <th>Total Bill (Rs)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
         </div>
     </div>
 
+    
 
-<!-- sidebar -->
-<script>
-    function toggleSubmenu() {
-        let submenu = document.getElementById("pagesSubmenu");
-        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
-    }
-</script>
+    <script>
+        const bookings = [];
 
-<script>
-        const bookings = [
-            { bookingNo: "B001", carNo: "C001", cusNic:"264566v", startDate: "2025-03-15", endDate: "2025-03-20", destination: "1123", withDriver: "Yes", },
-            { bookingNo: "B002", carNo: "C002", cusNic:"274566v", startDate: "2025-03-18", endDate: "2025-03-22", destination: "579", withDriver: "No",},
-            { bookingNo: "B003", carNo: "C003", cusNic:"234586v", startDate: "2025-03-12", endDate: "2025-03-16", destination: "3962", withDriver: "Yes", },
-            { bookingNo: "B004", carNo: "C004", cusNic:"234562v", startDate: "2025-03-25", endDate: "2025-03-30", destination: "2234", withDriver: "No",},
-            { bookingNo: "B005", carNo: "C005", cusNic:"234569v", startDate: "2025-03-05", endDate: "2025-03-10", destination: "7663", withDriver: "Yes", }
-        ];
-
-        function loadBookingTable(filter = "") {
-            const tableBody = document.getElementById("booking-table-body");
+        function loadTable() {
+            const tableBody = document.querySelector("#bookingTable tbody");
             tableBody.innerHTML = "";
 
-            bookings.forEach(booking => {
-                if (booking.bookingNo.toLowerCase().includes(filter.toLowerCase())) {
-                    const row = `
-                        <tr>
-                            <td>${booking.bookingNo}</td>
-                            <td>${booking.carNo}</td>
-                            <td>${booking.cusNic}</td>
-                            <td>${booking.startDate}</td>
-                            <td>${booking.endDate}</td>
-                            <td>${booking.destination}km</td>
-                            <td>${booking.withDriver}</td>
-                        </tr>
-                    `;
-                    tableBody.innerHTML += row;
-                }
+            bookings.forEach((booking, index) => {
+                const row = `
+                    <tr>
+                        <td>${booking.bookingNo}</td>
+                        <td>${booking.carNo}</td>
+                        <td>${booking.customerNic}</td>
+                        <td>${booking.startDate}</td>
+                        <td>${booking.endDate}</td>
+                        <td>${booking.destination}km</td>
+                        <td>${booking.startKm}km</td>
+                        <td>${booking.endKm}km</td>
+                        <td>${booking.withDriver}</td>
+                        <td>Rs.${booking.driverCost}</td>
+                        <td>Rs.${booking.paidAmount}</td>
+                        <td>${booking.paymentStatus}</td>
+                        <td>Rs.${booking.extraCharges}</td>
+                        <td>${booking.extraChargesStatus}</td>
+                        <td>Rs.${booking.refundableAmount}</td>
+                        <td>${booking.refundableStatus}</td>
+                        <td>Rs.${booking.totalBill}</td>
+                        <td><button class="remove-btn" onclick="removeBooking(${index})">Remove</button></td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
             });
         }
 
-        function filterBookings() {
-            const searchValue = document.getElementById("searchInput").value;
-            loadBookingTable(searchValue);
-        }
-
-        window.onload = () => loadBookingTable();
-</script>
-
+        
+    </script>
 </body>
 </html>

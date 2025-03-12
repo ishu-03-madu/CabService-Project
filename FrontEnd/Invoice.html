@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            color: #ff4d4d;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            font-size: 30px;
+            font-weight: bold;
+            font-family: cursive;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+        .logo img{
+            width: 70px;
+            height: 70px;
+        }
+        .logo span{
+            margin-top: 10px;
+        }
+        #border{
+            height: 150px;
+            width: 800px;
+            margin-top: -50px;
+        }
+        h3{
+            margin-left: 500px;
+            margin-top: -30px;
+            color: #6c0303;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            align-items: center;
+        }
+        .form-group input {
+            width: 60%;
+            padding: 5px;
+            cursor: not-allowed;
+            border: 1px solid rgb(217, 219, 217);
+        }
+        .payment-method {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .total-bill {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .terms {
+            width: 530px;
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-left: 15%
+        }
+        .pay-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: lightgray;
+            color: white;
+            cursor: not-allowed;
+            border-radius: 5px;
+        }
+        .pay-button.enabled {
+            background-color: #5c87e5;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="uploads/logo.png" alt="Mega City Cab" width="50">
+            <span>Mega City Cab</span>
+        </div>
+        <img src="uploads/border.png" alt="" id="border">
+        <h3>--| INVOICE |--</h3>
+
+        <div class="form-group">
+            <label>Booking no -</label>
+            <input type="text" readonly>
+        </div>
+        <div class="form-group">
+            <label>Car no -</label>
+            <input type="text" readonly>
+        </div>
+        <div class="form-group">
+            <label>Customer NIC or Passport -</label>
+            <input type="text" readonly>
+        </div>
+        <div class="form-group">
+            <label>Start date -</label>
+            <input type="date" readonly>
+        </div>
+        <div class="form-group">
+            <label>End date -</label>
+            <input type="date" readonly>
+        </div>
+        <div class="form-group">
+            <label>Designated destination -</label>
+            <input type="text" readonly>
+        </div>
+        <div class="form-group">
+            <label>Driver Cost -</label>
+            <input type="text" readonly>
+        </div>
+        <div class="form-group">
+            <label>Refundable amount -</label>
+            <input type="text" readonly>
+        </div>
+
+        <div class="payment-method">
+            <label>Payment Method</label>
+            <label><input type="radio" name="payment" id="onlinePayment"> Online Payment</label>
+            <label><input type="radio" name="payment" id="cashPayment"> Cash Payment</label>
+        </div>
+
+        <div class="total-bill">
+            <label>Total Bill</label>
+            <input type="text" readonly>
+        </div>
+
+        <div class="terms">
+            There is a daily distance limit of 100km and Rs.100 will be charged for each additional kilometer. Late return charges per day are Rs. 500. Yes, I agree 
+            <input type="checkbox" id="agreeCheckbox">
+        </div>
+
+        <button class="pay-button" id="payButton" disabled>Pay Now</button>
+    </div>
+
+    <script>
+        document.getElementById("agreeCheckbox").addEventListener("change", function() {
+            let payButton = document.getElementById("payButton");
+            if (this.checked) {
+                payButton.disabled = false;
+                payButton.classList.add("enabled");
+            } else {
+                payButton.disabled = true;
+                payButton.classList.remove("enabled");
+            }
+        });
+    </script>
+</body>
+</html>
